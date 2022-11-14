@@ -17,10 +17,11 @@ const service = axios.create({
 })
 // 请求拦截器
 service.interceptors.request.use(
-    (config) => {
-        Toast.loading({
-            duration: 0
-        })
+    (config: any) => {
+        // Toast.loading({
+        //     duration: 0
+        // })
+        config.headers.token = sessionStorage.getItem('token') || ''
         return config
     },
     (error) => {
@@ -31,17 +32,17 @@ service.interceptors.request.use(
 interface Res {
     state: number
     result: any
-    describe: string
+    msg: string
 }
 service.interceptors.response.use(
     (res) => {
 
 
 
-        if (res.data.state != 200) {
+        if (res.data.code != "0000") {
 
 
-            Toast((res.data as Res).describe)
+            Toast((res.data as Res).msg)
             return
         }
         Toast.clear()

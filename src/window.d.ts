@@ -9,4 +9,5 @@ declare interface Window {
     browseTaskActivtiy: (val: boolean) => void
     webkit: any
     appToJs: any
+    getInfoFromApp: any
 }

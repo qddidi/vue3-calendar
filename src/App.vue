@@ -1,5 +1,7 @@
 <template>
-  <router-view />
+
+  <router-view-keep-alive :disabled="!$route.meta.keepAlive" />
+
 </template>
 
 <style lang="less">
