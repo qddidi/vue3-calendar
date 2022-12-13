@@ -1,7 +1,7 @@
 <template>
   <div class="k-40kum0">
     <div class="cont">
-      <Headeritem :headerItem="info" />
+      <Headeritem :headerItem="info" isreport="1" @report="isReport = true" />
       <div class="info">
         {{ info.publishContent }}
       </div>
@@ -21,7 +21,7 @@
     <div class="send">
       <Send @send="send" :tel="info.publishTelphone" v-model="content" />
     </div>
-
+    <ReportPop @close="isReport=false" v-if="isReport" :floorMaster="info" :fid="id" :isReport="isReport" />
   </div>
 </template>
 
@@ -35,9 +35,12 @@ import home from "@/store"
 import { Toast, Dialog } from "vant"
 import getImgList from '@/utils/getimglist'
 import commentHeader from "@/components/detial/commentheader.vue"
+import ReportPop from '@/components/detial/reportpop.vue'
 const homeStore = home()
 const route = useRoute()
 const id = route.query.id
+const isReport = ref(false)
+
 //获取详细信息
 const info = ref<any>({})
 const getDetailInfo = async () => {

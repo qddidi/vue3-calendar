@@ -46,7 +46,7 @@
         <Popup v-model:show="addressshow" round position="bottom">
             <Area @cancel="addressshow = false" @confirm="confirm" title="请选择地址" :area-list="areaList" />
         </Popup>
-        <k-button>按钮</k-button>
+
     </div>
 </template>
 

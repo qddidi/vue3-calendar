@@ -56,7 +56,20 @@ const login = (data: any) => {
         data
     })
 }
-
+const complainttag = (data: any) => {
+    return $http({
+        url: '/api/complaint_tag/list',
+        method: 'get',
+        data
+    })
+}
+const tocomplaint = (data: any) => {
+    return $http({
+        url: '/api/complaint/to_complaint',
+        method: 'post',
+        data
+    })
+}
 export default {
     cataloglist,
     publishinfolist,
@@ -64,5 +77,7 @@ export default {
     replyinfolist,
     savereplyinfo,
     savepublishinfo,
-    login
+    login,
+    complainttag,
+    tocomplaint
 }

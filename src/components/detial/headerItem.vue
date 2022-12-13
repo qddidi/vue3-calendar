@@ -3,15 +3,19 @@
         <div class="til">
             <span>{{ props.headerItem.publishname }}</span>
             <div>{{ props.headerItem.publishCatalogname }}</div>
+            <span v-if="props.isreport" class="report" @click="emits('report')">举报</span>
         </div>
         <div class="tim">{{ props.headerItem.createTime }} | {{
-                `${props.headerItem.publishCity}${props.headerItem.publishCountry == 'undefined' ? '' : props.headerItem.publishCountry}`
+                `${props.headerItem.publishCity ? (props.headerItem.publishCity + props.headerItem.publishCountry) : ''}`
         }}</div>
+
     </div>
 </template>
 
 <script lang='ts' setup>
-const props = defineProps(['headerItem'])
+const props = defineProps(['headerItem', 'isreport'])
+const emits = defineEmits(['report'])
+
 </script>
 <style lang='less'>
 .headerItem {
@@ -24,6 +28,8 @@ const props = defineProps(['headerItem'])
         margin-bottom: 6px;
         display: flex;
         flex-wrap: wrap;
+        position: relative;
+        width: 320px;
 
         div {
             background: #1070D4;
@@ -33,6 +39,14 @@ const props = defineProps(['headerItem'])
             padding: 5px 8px;
             font-size: 14px;
             font-weight: normal;
+        }
+
+        .report {
+            font-size: 14px;
+            font-weight: normal;
+            position: absolute;
+            right: -20px;
+            top: 0;
         }
     }
 
