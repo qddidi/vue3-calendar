@@ -1,172 +1,326 @@
-* {
-  margin: 0;
-  padding: 0;
-}
-.k_wrap {
+.calendar_wrapper {
   background: #f5f5f5;
   min-height: 100vh;
-  .k_top {
-    display: flex;
-    justify-content: space-between;
-    padding: 15px;
-    box-sizing: border-box;
-    background-color: #1d7deb;
+  padding-top: 40px;
+  .calendar_nav {
+    font-weight: bolder;
+    padding: 8px 10px;
+    background: #ca3535;
     color: #fff;
-    .k_top_l {
-      div:nth-of-type(1) {
-        font-size: 14px;
-        margin-top: 4px;
-      }
-      div:nth-of-type(2) {
-        font-weight: bolder;
-        font-size: 20px;
-        margin-top: 8px;
-      }
-    }
-    .k_top_r {
-      text-align: right;
-      div:nth-of-type(1) {
-        font-size: 14px;
-        margin-top: 4px;
-      }
-      div:nth-of-type(2) {
-        font-size: 16px;
-        margin-top: 8px;
-      }
-    }
-  }
-  .k_wrap_btm {
-    padding: 10px;
-  }
-  .k_good {
     display: flex;
     justify-content: space-between;
-    margin-top: 15px;
-    .k_good_item {
-      width: 20%;
-      border: 1px solid #000;
-      height: 50px;
-      text-align: center;
-      img {
-        height: 50px;
-      }
-    }
-  }
-  .k_banner {
-    margin-top: 15px;
-    border: 1px solid gray;
-    height: 60px;
-  }
-  .k_showpj {
-    height: 200px;
-    border-radius: 15px;
-    margin-top: 15px;
-    padding: 15px;
-    background: #fff;
-    text-align: center;
-    .k_showpj_til {
-      font-weight: bolder;
-      font-size: 20px;
-    }
-    .k_showpj_tips {
-      margin-top: 10px;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    box-sizing: border-box;
+    z-index: 100;
+    left: 0;
+    font-size: 16px;
+    .calendar_nav_back {
       span {
-        padding: 4px;
-        background: #ffdfd1;
-        color: #7e2c19;
-        font-size: 12px;
-        margin-left: 5px;
-        border-radius: 3px;
+        font-size: 14px;
+      }
+      flex: 1;
+    }
+    .calendar_nav_date {
+      flex: 1;
+      text-align: center;
+    }
+    .calendar_nav_jin {
+      flex: 1;
+      display: flex;
+      flex-direction: row-reverse;
+      .cnj {
+        border: 1px solid #fff;
+        padding: 2px;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        .cnj_inner {
+          width: 100%;
+          height: 100%;
+          background: #fff;
+          color: #ca3535;
+          font-size: 14px;
+          text-align: center;
+          border-radius: 50%;
+        }
       }
     }
-    .k_showpj_rate {
-      font-size: 30px;
-      font-weight: bolder;
-      color: #eb1716;
-      margin-top: 15px;
+  }
+  .calendar {
+    padding: 10px;
+    background-color: #fff;
+    box-sizing: border-box;
+    .calendar_body {
+      .calendar_body_week {
+        display: flex;
+        .cbw_item {
+          flex: 1;
+          text-align: center;
+          font-size: 16px;
+        }
+      }
+      .calendar_body_date {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        .cbd_item {
+          width: calc(100% / 7 - 1px);
+          text-align: center;
+          padding: 10px 0;
+
+          margin-top: 4px;
+          .cbd_item_yangli {
+            font-weight: bolder;
+            font-size: 20px;
+          }
+          .cbd_item_yinli {
+            font-size: 12px;
+          }
+          .cbd_item_fest {
+            overflow: hidden;
+            white-space: nowrap;
+            font-size: 12px;
+            text-overflow: ellipsis;
+            -o-text-overflow: ellipsis;
+            color: #ca3535;
+          }
+          .cbd_item_jq {
+            font-size: 12px;
+            color: #ca3535;
+          }
+        }
+        .notnowmonth {
+          opacity: 0.3;
+        }
+        .nowork,
+        .ban {
+          position: relative;
+          ::after {
+            background: #e54041;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            color: #fff;
+            font-size: 12px;
+            text-align: center;
+            line-height: 20px;
+            transform: scale(0.7);
+            position: absolute;
+            top: -3px;
+            right: -3px;
+            content: "休";
+          }
+        }
+        .ban {
+          ::after {
+            content: "班";
+          }
+        }
+        .nowdate {
+          background: #cf3d3d;
+          color: #fff;
+          border-radius: 10px;
+
+          .cbd_item_fest {
+            color: #fff !important;
+            padding: 0 4px;
+          }
+        }
+        .selectday {
+          border: 1px solid #cf3d3d;
+          border-radius: 10px;
+          box-sizing: border-box;
+          padding: 9px 0;
+        }
+      }
     }
-    .k_showpj_earn {
-      color: #666666;
-      font-size: 15px;
+    .wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
     }
-    .k_showpj_btn {
+
+    .block {
       width: 80%;
+      border-radius: 10px;
+      background-color: #fff;
+    }
+  }
+  .showinfo {
+    background-color: #fff;
+    margin-top: 10px;
+    padding: 10px 10px 30px 10px;
+    .showinfo_yili {
+      text-align: center;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 0;
+      .showinfo_yili_icon {
+        font-size: 30px;
+        font-weight: bolder;
+        color: #ca3535;
+        width: 50px;
+      }
+      .showinfo_yili_mid {
+        flex: 1;
+      }
+      .showinfo_yili_til {
+        font-size: 22px;
+        font-weight: bolder;
+      }
+      .showinfo_yili_info {
+        display: flex;
+        justify-content: space-around;
+        font-size: 14px;
+        margin-top: 10px;
+      }
+    }
+    .showinfo_yiji {
+      padding: 10px;
+      border-radius: 10px;
+      margin-top: 10px;
+      background: #ffefef;
+      font-size: 16px;
+      display: flex;
+      align-items: center;
+      .showinfo_yiji_cont {
+        flex: 1;
+      }
+      .showinfo_yiji_wrapper {
+        background: #ca3535;
+        padding: 3px;
+        width: 30px;
+        border-radius: 5px;
+
+        .syw_inner {
+          border: 1px solid #fff;
+          color: #fff;
+          border-radius: 5px;
+          text-align: center;
+          padding: 10px 0;
+        }
+      }
+      .syc_yi {
+        display: flex;
+
+        margin-bottom: 10px;
+        .syc_icon {
+          width: 30px;
+          height: 30px;
+          border-radius: 50%;
+          border: 1px solid #1fb68b;
+          padding: 2px;
+          box-sizing: border-box;
+
+          .syc_icon_inner {
+            background: #1fb68b;
+            color: #fff;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
+        }
+        .syc_ji {
+          border: 1px solid #cf3d3d;
+          .j_inner {
+            background: #cf3d3d;
+          }
+        }
+        .syc_icon_item {
+          flex: 1;
+          font-size: 15px;
+          display: flex;
+          flex-wrap: wrap;
+          span {
+            margin-left: 10px;
+            margin-top: 5px;
+          }
+        }
+      }
+    }
+    .showinfo_getmore {
+      border-radius: 10px;
+      margin-top: 10px;
+      background: #ffefef;
+      margin-top: 10px;
+      border: 1px solid #e15857;
       text-align: center;
       padding: 10px;
-      color: #fff;
-      background: #1d7deb;
-      border-radius: 30px;
-      margin: 0 auto;
-      margin-top: 15px;
     }
-    .k_showpj_suggest {
-      margin-top: 5px;
-      color: #666666;
-    }
-  }
-  .k_managemoney {
-    padding: 15px;
-    margin-top: 15px;
-    background: #fff;
-    border-radius: 15px;
-    .k_managemoney_til {
-      font-size: 20px;
-      margin-bottom: 10px;
-      font-weight: bolder;
-    }
-    .k_managemoney_item {
-      .kmi_til {
-        font-size: 18px;
-        font-weight: bolder;
-      }
-      .kmi_cont {
+    .showinfo_wxcs {
+      border-radius: 10px;
+      margin-top: 10px;
+      background: #ffefef;
+      margin-top: 10px;
+      border: 1px solid #e15857;
+      .showinfo_wxcs_wcz {
         display: flex;
         justify-content: space-between;
         padding: 10px 0;
-        align-items: flex-end;
-        border-bottom: 1px solid #cdcdcd;
-        .kmi_cont_l {
-          div:nth-of-type(1) {
-            font-size: 30px;
-            color: #eb1716;
-            font-weight: bolder;
+        border-bottom: 1px solid #e15857;
+        .sww_item {
+          flex: 1;
+          text-align: center;
+          .sww_item_til {
+            color: #e15857;
+            font-size: 16px;
+            margin-bottom: 5px;
           }
-          div:nth-of-type(2) {
-            font-size: 14px;
-            color: #919191;
-          }
-        }
-        .kmi_cont_m {
-          div:nth-of-type(1) {
-            font-size: 17px;
+          .sww_item_value {
             color: #000;
-          }
-          div:nth-of-type(2) {
-            font-size: 14px;
-            color: #919191;
+            font-size: 15px;
           }
         }
-        .kmi_cont_r {
-          color: #636363;
+      }
+      .showinfo_wxcs_cf {
+        display: flex;
+        font-size: 16px;
+        border-bottom: 1px solid #e15857;
+        .swc_shen {
+          display: flex;
+          padding: 10px 0;
+          flex: 1;
+          &:nth-of-type(1) {
+            border-right: 1px solid #e15857;
+          }
+          .swc_shen_label {
+            color: #e15857;
+            flex: 1;
+            text-align: center;
+          }
+          .swc_shen_value {
+            color: #000;
+            flex: 1;
+            text-align: center;
+          }
         }
       }
-    }
-  }
-  .k_wrap_info {
-    text-align: center;
-    color: #868686;
-    margin-top: 15px;
-    padding-bottom: 15px;
-    .kwb_til {
-      font-size: 14px;
-      span {
-        font-weight: bolder;
+      .showinfo_wxcs_sycj {
+        padding: 10px;
+        display: flex;
+        align-items: center;
+        font-size: 16px;
+        .sws_label {
+          width: 40px;
+          color: #e15857;
+        }
+        .sws_value {
+          flex: 1;
+          display: flex;
+        }
+        .nowtime {
+          color: #e15857;
+        }
       }
-    }
-    .kwb_info {
-      text-align: center;
-      font-size: 12px;
-      padding: 10px;
     }
   }
 }

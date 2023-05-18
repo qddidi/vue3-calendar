@@ -1,9 +1,11 @@
+<!--
+ * @Description: 
+ * @Date: 2023-05-15 10:35:14
+ * @Author: didi
+ * @LastEditTime: 2023-05-18 11:44:13
+-->
 <template>
-
-  <router-view-keep-alive :disabled="!$route.meta.keepAlive" />
-
+  <router-view />
 </template>
 
-<style lang="less">
-
-</style>
+<style lang="less"></style>
