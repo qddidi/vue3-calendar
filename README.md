@@ -2,6 +2,10 @@
 
 万年历,老黄历.日历
 
+### 体验地址
+
+[万年历](http://geeksdidi.gitee.io/v3-calendar/#/)
+
 ### 首页
 
 ![image](https://github.com/qddidi/vue3-calendar/assets/51770976/d9c89c8d-052a-495a-ae87-ae09b48e9706)
