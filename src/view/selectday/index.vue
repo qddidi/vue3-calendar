@@ -2,27 +2,25 @@
  * @Description: 
  * @Date: 2023-05-17 11:01:40
  * @Author: didi
- * @LastEditTime: 2023-05-18 11:16:51
+ * @LastEditTime: 2023-05-18 16:24:42
 -->
 <template>
   <div class="selectday">
     <div class="selectday_nav">
-      <div class="selectday_nav_back" @click="back">
-        <Icon name="arrow-left" /><span>返回</span>
-      </div>
+      <div class="selectday_nav_back"></div>
       <div class="selectday_nav_date">
         <div class="snd_change">
           <div
             class="snd_change_item"
             @click="yijitype = 1"
-            :class="{ select: yijitype == 1 }"
+            :class="{ selecty: yijitype == 1 }"
           >
             宜
           </div>
           <div
             class="snd_change_item"
             @click="yijitype = 2"
-            :class="{ select: yijitype == 2 }"
+            :class="{ selectj: yijitype == 2 }"
           >
             忌
           </div>
@@ -68,7 +66,7 @@ const back = () => {
   .selectday_nav {
     font-weight: bolder;
     padding: 8px 10px;
-    background: #ca3535;
+    background: #fff;
     color: #fff;
     display: flex;
     justify-content: space-between;
@@ -90,9 +88,9 @@ const back = () => {
       flex: 1;
       text-align: center;
       .snd_change {
-        border: 1px solid #fff;
+        border: 1px solid #f77307;
         display: flex;
-        color: #fff;
+        color: #000;
         width: 80px;
         margin: 0 auto;
         border-radius: 5px;
@@ -104,9 +102,14 @@ const back = () => {
           flex: 1;
           text-align: center;
         }
-        .select {
-          background: #fff;
-          color: #ca3535;
+        .selecty {
+          background: #f77307;
+          color: #fff;
+          border-radius: 4px;
+        }
+        .selectj {
+          background: #b2302e;
+          color: #fff;
           border-radius: 4px;
         }
       }

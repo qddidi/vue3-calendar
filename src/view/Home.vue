@@ -1,9 +1,7 @@
 <template>
   <div class="calendar_wrapper">
     <div class="calendar_nav">
-      <div class="calendar_nav_back" @click="back">
-        <Icon name="arrow-left" /><span>返回</span>
-      </div>
+      <div class="calendar_nav_back"></div>
       <div class="calendar_nav_date" @click="showpicker = true">
         {{ nowyear }}年{{ nowmonth }}月<Icon name="arrow-down" />
       </div>
@@ -87,11 +85,13 @@
             <span>{{ dateinfo.ganzhiyear }}</span
             ><span>{{ dateinfo.ganzhimonth }}月</span
             ><span>{{ dateinfo.ganzhiday }}日</span
-            ><span>第{{ dateinfo.weeks }}周</span>
+            ><span>星期{{ dateinfo.xingqi }}</span>
           </div>
         </div>
         <Icon class="showinfo_yili_icon" @click="nextDay(1)" name="arrow" />
       </div>
+    </div>
+    <div class="showinfo">
       <div class="showinfo_yiji">
         <div class="showinfo_yiji_cont">
           <div class="syc_yi">
@@ -115,10 +115,9 @@
           <div class="syw_inner" @click="toselect">吉日查询</div>
         </div>
       </div>
-      <div class="showinfo_getmore" v-if="!showwxcs" @click="showwxcs = true">
-        查看更多 <Icon name="arrow-down" />
-      </div>
-      <div class="showinfo_wxcs" v-show="showwxcs">
+    </div>
+    <div class="showinfo">
+      <div class="showinfo_wxcs">
         <div class="showinfo_wxcs_wcz">
           <div class="sww_item">
             <div class="sww_item_til">五行</div>
@@ -128,29 +127,9 @@
             <div class="sww_item_til">冲煞</div>
             <div class="sww_item_value">{{ dateinfo.chongsha }}</div>
           </div>
-          <div class="sww_item">
+          <div class="sww_item noboder">
             <div class="sww_item_til">值神</div>
             <div class="sww_item_value">{{ dateinfo.zhishen }}</div>
-          </div>
-        </div>
-        <div class="showinfo_wxcs_cf">
-          <div class="swc_shen">
-            <div class="swc_shen_label">财神</div>
-            <div class="swc_shen_value">{{ dateinfo.caishenpos }}</div>
-          </div>
-          <div class="swc_shen">
-            <div class="swc_shen_label">福神</div>
-            <div class="swc_shen_value">{{ dateinfo.fushenpos }}</div>
-          </div>
-        </div>
-        <div class="showinfo_wxcs_cf">
-          <div class="swc_shen">
-            <div class="swc_shen_label">喜神</div>
-            <div class="swc_shen_value">{{ dateinfo.xishenpos }}</div>
-          </div>
-          <div class="swc_shen">
-            <div class="swc_shen_label">阳贵</div>
-            <div class="swc_shen_value">{{ dateinfo.yangguipos }}</div>
           </div>
         </div>
         <div class="showinfo_wxcs_sycj">
@@ -176,6 +155,32 @@
             </div>
           </div>
         </div>
+        <div class="showinfo_wxcs_cf">
+          <div class="swc_shen">
+            <div class="swc_shen_label">财神</div>
+            <div class="swc_shen_value">{{ dateinfo.caishenpos }}</div>
+          </div>
+          <div class="swc_shen">
+            <div class="swc_shen_label">福神</div>
+            <div class="swc_shen_value">{{ dateinfo.fushenpos }}</div>
+          </div>
+        </div>
+
+        <div class="showinfo_wxcs_cf">
+          <div class="swc_shen">
+            <div class="swc_shen_label">喜神</div>
+            <div class="swc_shen_value">{{ dateinfo.xishenpos }}</div>
+          </div>
+          <div class="swc_shen">
+            <div class="swc_shen_label">阳贵</div>
+            <div class="swc_shen_value">{{ dateinfo.yangguipos }}</div>
+          </div>
+        </div>
+
+        <div class="pzbj">
+          <div class="pzbj_til">彭祖百忌</div>
+          <div class="pzbj_val">{{ dateinfo.pzbj }}</div>
+        </div>
       </div>
     </div>
   </div>
@@ -190,11 +195,7 @@ import { reactive, ref } from "vue";
 import { getYearWeek } from "../utils/getweeks";
 import { useRouter } from "vue-router";
 import { kanApp } from "@kanface/utils";
-//返回
-const back = () => {
-  kanApp("finishThisPage");
-};
-window?.android?.hideTitleBar("#ca3535", true);
+
 const showpicker = ref(false);
 //固定年月,用于判断当前时间
 let gdmonth = new Date().getMonth() + 1;
@@ -203,9 +204,6 @@ let gdyear = new Date().getFullYear();
 let nowyear = ref(new Date().getFullYear());
 let nowmonth = ref(new Date().getMonth() + 1);
 let nowdate = ref(new Date().getDate());
-
-//展示更多
-const showwxcs = ref(false);
 
 //当天实例
 const todayins = Solar.fromDate(new Date());
@@ -283,6 +281,8 @@ const dateinfo = reactive<any>({
   fushenpos: "",
   caishenpos: "",
   times: [],
+  xingqi: "",
+  pzbj: "",
 });
 const getDateInfo = (item: any) => {
   dateinfo.yinli =
@@ -299,6 +299,9 @@ const getDateInfo = (item: any) => {
   dateinfo.dayyi = item.getLunar().getDayYi();
   dateinfo.dayji = item.getLunar().getDayJi();
   dateinfo.wuxing = item.getLunar().getDayNaYin();
+  dateinfo.xingqi = item.getWeekInChinese();
+  dateinfo.pzbj =
+    item.getLunar().getPengZuGan() + " " + item.getLunar().getPengZuZhi();
   dateinfo.chongsha =
     item.getLunar().getDayShengXiao() +
     "日冲" +

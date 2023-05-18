@@ -2,15 +2,13 @@
  * @Description: 
  * @Date: 2023-05-17 14:08:49
  * @Author: didi
- * @LastEditTime: 2023-05-18 11:33:55
+ * @LastEditTime: 2023-05-18 16:38:33
 -->
 <template>
   <div class="detail">
     <div class="detail_nav">
-      <div class="detail_nav_back" @click="back">
-        <Icon name="arrow-left" /><span>返回</span>
-      </div>
-      <div class="detail_nav_date">
+      <div class="detail_nav_back" @click="back"></div>
+      <div class="detail_nav_date" :class="{ nav_ji: type == '2' }">
         {{ yijiname }}
       </div>
       <div class="detail_nav_jin"></div>
@@ -231,8 +229,8 @@ const getWeekDay = () => {
   }
   .detail_nav {
     padding: 8px 10px;
-    background: #ca3535;
-    color: #fff;
+    background: #fff;
+    color: #000;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -252,6 +250,10 @@ const getWeekDay = () => {
     .detail_nav_date {
       flex: 1;
       text-align: center;
+      color: #dc7148;
+    }
+    .nav_ji {
+      color: #ca3535;
     }
     .detail_nav_jin {
       flex: 1;

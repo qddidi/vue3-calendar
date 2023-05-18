@@ -5,8 +5,8 @@
   .calendar_nav {
     font-weight: bolder;
     padding: 8px 10px;
-    background: #ca3535;
-    color: #fff;
+    color: #000;
+    background: #fff;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -32,16 +32,16 @@
       display: flex;
       flex-direction: row-reverse;
       .cnj {
-        border: 1px solid #fff;
+        border: 1px solid #4e6ef2;
         padding: 2px;
-        width: 20px;
-        height: 20px;
+        width: 18px;
+        height: 18px;
         border-radius: 50%;
         .cnj_inner {
           width: 100%;
           height: 100%;
           background: #fff;
-          color: #ca3535;
+          color: #4e6ef2;
           font-size: 14px;
           text-align: center;
           border-radius: 50%;
@@ -85,11 +85,11 @@
             font-size: 12px;
             text-overflow: ellipsis;
             -o-text-overflow: ellipsis;
-            color: #ca3535;
+            color: #e54041;
           }
           .cbd_item_jq {
             font-size: 12px;
-            color: #ca3535;
+            color: #4e6ef2;
           }
         }
         .notnowmonth {
@@ -102,7 +102,7 @@
             background: #e54041;
             width: 20px;
             height: 20px;
-            border-radius: 50%;
+            border-radius: 5px;
             color: #fff;
             font-size: 12px;
             text-align: center;
@@ -117,10 +117,11 @@
         .ban {
           ::after {
             content: "班";
+            background: #4e5877;
           }
         }
         .nowdate {
-          background: #cf3d3d;
+          background: #4e6ef2;
           color: #fff;
           border-radius: 10px;
 
@@ -130,7 +131,7 @@
           }
         }
         .selectday {
-          border: 1px solid #cf3d3d;
+          border: 1px solid #4e6ef2;
           border-radius: 10px;
           box-sizing: border-box;
           padding: 9px 0;
@@ -153,7 +154,7 @@
   .showinfo {
     background-color: #fff;
     margin-top: 10px;
-    padding: 10px 10px 30px 10px;
+    padding: 10px;
     .showinfo_yili {
       text-align: center;
       display: flex;
@@ -163,7 +164,7 @@
       .showinfo_yili_icon {
         font-size: 30px;
         font-weight: bolder;
-        color: #ca3535;
+        color: #000;
         width: 50px;
       }
       .showinfo_yili_mid {
@@ -182,9 +183,9 @@
     }
     .showinfo_yiji {
       padding: 10px;
-      border-radius: 10px;
+      border-radius: 6px;
       margin-top: 10px;
-      background: #ffefef;
+
       font-size: 16px;
       display: flex;
       align-items: center;
@@ -192,7 +193,7 @@
         flex: 1;
       }
       .showinfo_yiji_wrapper {
-        background: #ca3535;
+        background: #c69c70;
         padding: 3px;
         width: 30px;
         border-radius: 5px;
@@ -230,9 +231,9 @@
           }
         }
         .syc_ji {
-          border: 1px solid #cf3d3d;
+          border: 1px solid gray;
           .j_inner {
-            background: #cf3d3d;
+            background: gray;
           }
         }
         .syc_icon_item {
@@ -252,48 +253,55 @@
       margin-top: 10px;
       background: #ffefef;
       margin-top: 10px;
-      border: 1px solid #e15857;
+      border: 1px solid #c69c70;
       text-align: center;
       padding: 10px;
     }
     .showinfo_wxcs {
-      border-radius: 10px;
+      border-radius: 6px;
       margin-top: 10px;
-      background: #ffefef;
+      background: #fff;
       margin-top: 10px;
-      border: 1px solid #e15857;
+      border: 1px solid #c69c70;
       .showinfo_wxcs_wcz {
         display: flex;
         justify-content: space-between;
-        padding: 10px 0;
-        border-bottom: 1px solid #e15857;
+
+        border-bottom: 1px solid #c69c70;
         .sww_item {
           flex: 1;
-          text-align: center;
+          padding: 10px 0;
+          justify-content: center;
+          display: flex;
+          border-right: 1px solid #c69c70;
           .sww_item_til {
-            color: #e15857;
+            color: #c69c70;
             font-size: 16px;
             margin-bottom: 5px;
+            margin-right: 5px;
           }
           .sww_item_value {
             color: #000;
-            font-size: 15px;
+            font-size: 16px;
           }
+        }
+        .noboder {
+          border: none;
         }
       }
       .showinfo_wxcs_cf {
         display: flex;
         font-size: 16px;
-        border-bottom: 1px solid #e15857;
+        border-top: 1px solid #c69c70;
         .swc_shen {
           display: flex;
           padding: 10px 0;
           flex: 1;
           &:nth-of-type(1) {
-            border-right: 1px solid #e15857;
+            border-right: 1px solid #c69c70;
           }
           .swc_shen_label {
-            color: #e15857;
+            color: #c69c70;
             flex: 1;
             text-align: center;
           }
@@ -311,14 +319,23 @@
         font-size: 16px;
         .sws_label {
           width: 40px;
-          color: #e15857;
+          color: #c69c70;
         }
         .sws_value {
           flex: 1;
           display: flex;
         }
         .nowtime {
-          color: #e15857;
+          color: #c69c70;
+        }
+      }
+      .pzbj {
+        border-top: 1px solid #c69c70;
+        padding: 10px;
+        text-align: center;
+        .pzbj_til {
+          color: #c69c70;
+          margin-bottom: 5px;
         }
       }
     }
