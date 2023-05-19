@@ -53,7 +53,7 @@
         </div>
         <div class="detail_selectday_isweek">
           <Switch
-            size="5vw"
+            class="switch_font"
             active-color="#D34B4B"
             @change="getWeekDay"
             v-model="isWeekShow"
@@ -291,6 +291,9 @@ const getWeekDay = () => {
           color: #c45751;
 
           font-size: 14px;
+        }
+        .switch_font {
+          font-size: 20px;
         }
       }
     }
