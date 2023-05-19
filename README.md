@@ -1,10 +1,22 @@
+<!--
+ * @Description:
+ * @Date: 2023-05-18 15:16:10
+ * @Author: didi
+ * @LastEditTime: 2023-05-19 18:10:28
+-->
+
 # vue3-calendar
 
 万年历,老黄历.日历
 
 ### 体验地址
 
-[万年历](http://geeksdidi.gitee.io/v3-calendar/#/)
+- h5 版:
+  [万年历](http://geeksdidi.gitee.io/v3-calendar/#/)
+
+- 小程序版: (微信扫码)
+
+![gh_28eb17811f61_258](https://github.com/qddidi/vue3-calendar/assets/51770976/5b4707d8-90c6-4934-bd05-e4e179647ee7)
 
 ### 首页
 
