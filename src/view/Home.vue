@@ -143,14 +143,9 @@
             >
               {{ item.getGanZhi()
               }}{{
-                LunarTime.fromYmdHms(
-                  nowyear,
-                  nowmonth,
-                  nowdate,
-                  index * 2,
-                  0,
-                  0
-                ).getTianShenLuck()
+                Lunar.fromDate(
+                  new Date(nowyear, nowmonth, nowdate, index * 2, 0, 0)
+                ).getTimeTianShenLuck()
               }}
             </div>
           </div>
@@ -187,14 +182,13 @@
 </template>
 
 <script lang="ts" setup>
-import { Solar, SolarMonth, HolidayUtil, LunarTime } from "lunar-typescript";
+import { Solar, SolarMonth, HolidayUtil, Lunar } from "lunar-typescript";
 import weeklist from "@/utils/weeklist";
 import { Overlay, Icon } from "vant";
 import datePicker from "@/components/datepicker.vue";
 import { reactive, ref } from "vue";
 import { getYearWeek } from "../utils/getweeks";
 import { useRouter } from "vue-router";
-import { kanApp } from "@kanface/utils";
 
 const showpicker = ref(false);
 //固定年月,用于判断当前时间
@@ -219,9 +213,7 @@ let datelist: any = ref([]);
  * @return {array}
  */
 const getContent = (nowyear: any, nowmonth: any) => {
-  var d = SolarMonth.fromDate(
-    new Date(`${nowyear}/${nowmonth}/${nowdate.value}`)
-  );
+  var d = SolarMonth.fromDate(new Date(`${nowyear}/${nowmonth}/1`));
   const firstweek = d.getDays()[0].getWeek();
   const prefixdate = d
     .next(-1)
